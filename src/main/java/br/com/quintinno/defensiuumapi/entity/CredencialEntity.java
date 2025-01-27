@@ -2,6 +2,8 @@ package br.com.quintinno.defensiuumapi.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,10 +22,12 @@ public class CredencialEntity {
     @Column(name = "codigo", nullable = false)
     private Integer codigo;
 
+    @JsonProperty(value = "categoria")
     @ManyToOne
     @JoinColumn(name = "id_categoria_credencial")
     private CategoriaCredencialEntity categoriaCredencialEntity;
 
+    @JsonProperty(value = "pessoa")
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
     private PessoaEntity pessoaEntity;
@@ -37,17 +41,17 @@ public class CredencialEntity {
     @Column(name = "url", length = 255)
     private String url;
 
-    @Column(name = "descricaoSistema", length = 100)
+    @Column(name = "descricao", length = 100)
     private String descricaoSistema;
 
-    @Column(name = "dataCriacao", nullable = false)
-    private LocalDate dataCriacao;
+    @Column(name = "data-criacao", nullable = false)
+    private LocalDate dataCriacao = LocalDate.now();
 
     @Column(name = "data-atualizacao")
     private LocalDate dataAtualizacao;
 
     @Column(name = "ativo", nullable = false)
-    private Boolean eAtivo;
+    private Boolean eAtivo = true;
 
     public Integer getCodigo() {
         return codigo;

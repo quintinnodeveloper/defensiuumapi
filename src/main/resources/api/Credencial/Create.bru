@@ -1,0 +1,26 @@
+meta {
+  name: Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/credencial
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "categoria": {
+       "codigo": 3 
+    },
+    "pessoa": {
+       "codigo": 1
+    },
+    "identificador": "email@provedor.com.br",
+    "senha": "5823c4e9-6e1a-4ef2-8cf2-a1f3b8830896",
+    "url": "https://pt-br.facebook.com/login/device-based/regular/login/",
+    "descricao": "Facebook"
+  }
+}

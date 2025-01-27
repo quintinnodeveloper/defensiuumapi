@@ -2,26 +2,51 @@ package br.com.quintinno.defensiuumapi.entity;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_credencial")
 public class CredencialEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "codigo", nullable = false)
     private Integer codigo;
 
+    @ManyToOne
+    @JoinColumn(name = "id_categoria_credencial")
     private CategoriaCredencialEntity categoriaCredencialEntity;
 
+    @ManyToOne
+    @JoinColumn(name = "id_pessoa")
     private PessoaEntity pessoaEntity;
 
+    @Column(name = "identificador", length = 200, unique = true, nullable = false)
     private String identificador;
 
+    @Column(name = "senha", length = 100, nullable = false)
     private String senha;
 
+    @Column(name = "url", length = 255)
     private String url;
 
+    @Column(name = "descricaoSistema", length = 100)
     private String descricaoSistema;
 
+    @Column(name = "dataCriacao", nullable = false)
     private LocalDate dataCriacao;
 
+    @Column(name = "data-atualizacao")
     private LocalDate dataAtualizacao;
 
+    @Column(name = "ativo", nullable = false)
     private Boolean eAtivo;
 
     public Integer getCodigo() {

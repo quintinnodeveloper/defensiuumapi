@@ -1,9 +1,22 @@
 package br.com.quintinno.defensiuumapi.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_pessoa")
 public class PessoaEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "codigo", nullable = false)
     private Integer codigo;
 
+    @Column(name = "nome", length = 100, nullable = false)
     private String nome;
 
     public Integer getCodigo() {
